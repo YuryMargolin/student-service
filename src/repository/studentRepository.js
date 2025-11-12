@@ -12,7 +12,14 @@ export const addStudent = ({id, name, password}) => {
 
 export const findStudent = id => students.get(id);
 
-export const removeStudent = id => students.delete(id);
+export const removeStudent = id => {
+    const student = students.get(id);
+    if (student) {
+        students.delete(id);
+        return student
+    }
+}
+
 
 export const updateStudent = (id, {name, password}) => {
     const student = students.get(id);
@@ -58,5 +65,5 @@ export const countByName = (names) => {
 
 export const findByMinScore = (exam, minScore) => {
     return Array.from(students.values()).filter(student => student.scores[exam] >= minScore);
-}
+};
 

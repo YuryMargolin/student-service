@@ -20,9 +20,9 @@ export const findStudent = (req, res) => {
 }
 
 export const deleteStudent = (req, res) => {
-    const deleted = repo.removeStudent(+req.params.id);
-    if (deleted) {
-        res.status(204).send();
+    const deletedStudent = repo.removeStudent(+req.params.id);
+    if (deletedStudent) {
+        res.json(deletedStudent)
     } else {
         res.status(404).send();
     }
